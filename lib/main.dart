@@ -1,9 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:trait_lens_admin/core/di/di.dart';
+import 'package:trait_lens_admin/firebase_options.dart';
 import 'package:trait_lens_admin/trait_lens_admin_app.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const TraitLensAdmin());
 }

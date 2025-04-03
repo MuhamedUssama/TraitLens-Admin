@@ -31,6 +31,11 @@ class AppTheme {
         color: black,
         fontWeight: FontWeight.w400,
       ),
+      bodySmall: GoogleFonts.poppins(
+        fontSize: 14.sp,
+        color: grey,
+        fontWeight: FontWeight.w600,
+      ),
       labelLarge: GoogleFonts.poppins(
         fontSize: 20.sp,
         color: white,

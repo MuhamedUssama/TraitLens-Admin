@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "988815369913",
+    "project_id": "traitlens",
+    "storage_bucket": "traitlens.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988815369913:android:c96064bd088b21c7951d68",
+        "android_client_info": {
+          "package_name": "com.example.trait_lens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988815369913-iuuarllog4jcqtek9dl5b9j198fo7p0f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trait_lens",
+            "certificate_hash": "7e548a65ffa0a034080e7a43d73039c384a2058d"
+          }
+        },
+        {
+          "client_id": "988815369913-d3vm2gqqquv93og57gt1qn36gabhpr39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1WteXwEGvRIintD2Ut_knYdleTBfDbTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988815369913-c3tvsh4cma4a9sv5gtncmc2dhbs7gcgg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "988815369913-9iorthq0vobur7e3m98qu9jqm5jklnnt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.traitLens"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988815369913:android:dc0018b0ff4d1985951d68",
+        "android_client_info": {
+          "package_name": "com.example.trait_lens_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988815369913-d3vm2gqqquv93og57gt1qn36gabhpr39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1WteXwEGvRIintD2Ut_knYdleTBfDbTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988815369913-c3tvsh4cma4a9sv5gtncmc2dhbs7gcgg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "988815369913-9iorthq0vobur7e3m98qu9jqm5jklnnt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.traitLens"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

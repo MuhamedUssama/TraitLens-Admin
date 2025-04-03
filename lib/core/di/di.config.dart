@@ -13,6 +13,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../../features/home/view_model/home_screen_view_model.dart' as _i666;
+import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -22,6 +23,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i666.HomeScreenViewModel>(() => _i666.HomeScreenViewModel());
+    gh.singleton<_i254.SharedPreferencesHelper>(
+      () => _i254.SharedPreferencesHelper(),
+    );
     return this;
   }
 }

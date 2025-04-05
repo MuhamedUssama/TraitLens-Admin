@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:trait_lens_admin/core/models/user_details_model.dart';
 import 'package:trait_lens_admin/features/auth/data/models/user_model.dart';
 
 class FireBaseService {
@@ -14,19 +15,19 @@ class FireBaseService {
     return usersCollection;
   }
 
-  // static CollectionReference<UserProfileModel> getUserProfileCollection(
-  //   String userId,
-  // ) {
-  //   CollectionReference<UserProfileModel> userProfileCollection =
-  //       getUsersCollection()
-  //           .doc(userId)
-  //           .collection(UserProfileModel.collectionName)
-  //           .withConverter<UserProfileModel>(
-  //             fromFirestore:
-  //                 (documentSnapshot, options) =>
-  //                     UserProfileModel.fromJson(documentSnapshot.data()!),
-  //             toFirestore: (userProfile, options) => userProfile.toJson(),
-  //           );
-  //   return userProfileCollection;
-  // }
+  static CollectionReference<UserDetailsModel> getUserProfileCollection(
+    String userId,
+  ) {
+    CollectionReference<UserDetailsModel> userProfileCollection =
+        getUsersCollection()
+            .doc(userId)
+            .collection(UserDetailsModel.collectionName)
+            .withConverter<UserDetailsModel>(
+              fromFirestore: (documentSnapshot, options) {
+                return UserDetailsModel.fromJson(documentSnapshot.data()!);
+              },
+              toFirestore: (userProfile, options) => userProfile.toJson(),
+            );
+    return userProfileCollection;
+  }
 }

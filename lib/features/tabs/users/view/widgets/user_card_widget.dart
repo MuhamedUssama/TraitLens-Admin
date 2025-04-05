@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:trait_lens_admin/core/constants/app_constants.dart';
+import 'package:trait_lens_admin/core/models/user_details_model.dart';
+import 'package:trait_lens_admin/features/tabs/users/view/view_models/users_tab_view_model/users_tab_view_model.dart';
 
 class UserCardWidget extends StatelessWidget {
-  const UserCardWidget({super.key});
+  final UserDetailsModel user;
+  final UsersTabViewModel viewModel;
+
+  const UserCardWidget({
+    super.key,
+    required this.user,
+    required this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,11 +19,11 @@ class UserCardWidget extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           backgroundImage: NetworkImage(
-            'https://iheitgacckotzfdtqybc.supabase.co/storage/v1/object/public/profileImages/profile_images/XyRqerSGlGhTvUUIX2jr7hjfNKO2/1743869511760.jpg',
+            user.profileImageUrl ?? AppConstants.noFoundImage,
           ),
         ),
-        title: Text('Mohamed Osama'),
-        subtitle: Text('23 years old'),
+        title: Text(user.fullName ?? 'Unknown'),
+        subtitle: Text('${viewModel.calculateAge(user.birthDay)} years old'),
         trailing: FilledButton(
           onPressed: () {},
           child: Text(

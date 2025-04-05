@@ -51,6 +51,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
       () => _i254.SharedPreferencesHelper(),
     );
+    gh.lazySingleton<_i685.UsersRemoteDataSource>(
+      () => _i685.UsersRemoteDataSource(),
+    );
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.factory<_i621.UsersRepository>(
       () => _i650.UsersRepositoryImpl(gh<_i685.UsersRemoteDataSource>()),

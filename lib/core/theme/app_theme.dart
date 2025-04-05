@@ -17,8 +17,11 @@ class AppTheme {
 
     appBarTheme: AppBarTheme(backgroundColor: white),
 
+    indicatorColor: primary,
+
     cardTheme: CardTheme(
       color: lightBlue,
+      elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
     ),
 

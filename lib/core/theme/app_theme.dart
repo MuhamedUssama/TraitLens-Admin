@@ -43,6 +43,12 @@ class AppTheme {
       ),
     ),
 
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: primary,
+      selectionColor: primary.withValues(alpha: .5),
+      selectionHandleColor: primary,
+    ),
+
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: GoogleFonts.poppins(
         color: grey,
@@ -52,6 +58,11 @@ class AppTheme {
       hintStyle: GoogleFonts.poppins(
         color: grey,
         fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+      ),
+      errorStyle: GoogleFonts.poppins(
+        color: red,
+        fontSize: 12.sp,
         fontWeight: FontWeight.w500,
       ),
 
@@ -76,6 +87,10 @@ class AppTheme {
         borderSide: const BorderSide(color: primary, width: 2),
       ),
       errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.r),
+        borderSide: const BorderSide(color: red, width: 2),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.r),
         borderSide: const BorderSide(color: red, width: 2),
       ),

@@ -14,80 +14,49 @@ import '../../../../core/utils/firebase_services.dart';
 @Singleton(as: AuthDataSource)
 class AuthDataSourceImpl implements AuthDataSource {
   @override
-  Future<Either<ServerException, UserEntity>> signUpWithEmailAndPassword({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      final List<String> methods = await FirebaseAuth.instance
-          .fetchSignInMethodsForEmail(email);
-      if (methods.isNotEmpty) {
-        return const Left(
-          ServerException(
-            "The email address is already in use by another account.",
-          ),
-        );
-      }
-
-      UserCredential credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-
-      if (credential.user == null) {
-        return left(const ServerException("User creation failed"));
-      }
-
-      UserModel userModel = UserModel(id: credential.user!.uid, email: email);
-      CollectionReference<UserModel> usersCollection =
-          FireBaseService.getUsersCollection();
-      await usersCollection.doc(userModel.id).set(userModel);
-
-      UserEntity userEntity = userModel.toEntity();
-
-      return right(userEntity);
-    } on FirebaseAuthException catch (error) {
-      return left(ServerException(error.message));
-    }
-  }
-
-  @override
   Future<Either<ServerException, UserEntity>> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
     try {
+      CollectionReference<UserModel> usersCollection =
+          FireBaseService.getUsersCollection();
+
+      QuerySnapshot<UserModel> querySnapshot =
+          await usersCollection.where('email', isEqualTo: email).limit(1).get();
+
+      if (querySnapshot.docs.isEmpty) {
+        return left(ServerException("User not found in database"));
+      }
+
+      UserModel userModel = querySnapshot.docs.first.data();
+
+      if (userModel.role != 'admin') {
+        return left(ServerException("Access denied. Only admins can sign in."));
+      }
+
       UserCredential credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
       if (credential.user == null) {
-        return left(const ServerException("User creation failed"));
+        return left(const ServerException("User sign-in failed"));
       }
 
       if (!credential.user!.emailVerified) {
         await verifyAccount();
         return left(
           ServerException(
-            "Please verify your email before signing in, Verification email sent to ${FirebaseAuth.instance.currentUser!.email}",
+            "Please verify your email before signing in. Verification email sent to ${FirebaseAuth.instance.currentUser!.email}",
           ),
         );
       }
 
-      CollectionReference<UserModel> usersCollection =
-          FireBaseService.getUsersCollection();
-
-      DocumentSnapshot<UserModel> documentSnapShot =
-          await usersCollection.doc(credential.user!.uid).get();
-
-      UserModel userModel = documentSnapShot.data()!;
       UserEntity userEntity = userModel.toEntity();
-
       return right(userEntity);
     } on FirebaseAuthException catch (error) {
-      return left(ServerException(error.message));
+      return left(ServerException(error.message ?? "Authentication error"));
     }
   }
-
-  @override
-  Future<void> signOut() => FirebaseAuth.instance.signOut();
 
   @override
   Future<Either<ServerException, String>> verifyAccount() async {
@@ -118,4 +87,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
     }
   }
+
+  @override
+  Future<void> signOut() => FirebaseAuth.instance.signOut();
 }

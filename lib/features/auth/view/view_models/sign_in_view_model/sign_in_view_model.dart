@@ -29,8 +29,7 @@ class SignInViewModel extends Cubit<SignInStates> {
         _signInWithEmailAndPassword();
       case ChangePasswordVisibilityAction():
         _changePasswordVisibility();
-      case NavigateToSignUpScreenAction():
-        _navigateToSignUpScreen();
+
       case NavigateToForgetPasswordScreenAction():
         _navigateToForgetPasswordScreen();
       case NavigateToHomeScreenAction():
@@ -76,9 +75,5 @@ class SignInViewModel extends Cubit<SignInStates> {
 
   void _navigateToHomeScreen() {
     emit(NavigateToHomeScreenState());
-  }
-
-  void _navigateToSignUpScreen() {
-    emit(NavigateToSignUpScreenState());
   }
 }

@@ -17,8 +17,6 @@ class SignInSuccessState extends SignInStates {
   SignInSuccessState(this.userEntity);
 }
 
-class NavigateToSignUpScreenState extends SignInStates {}
-
 class NavigateToForgetPasswordScreenState extends SignInStates {}
 
 class NavigateToHomeScreenState extends SignInStates {}

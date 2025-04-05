@@ -89,7 +89,11 @@ class SignInForm extends StatelessWidget {
             ),
             child: BlocBuilder<SignInViewModel, SignInStates>(
               bloc: viewModel,
-              buildWhen: (previous, current) => current is SignInLoadingState,
+              buildWhen:
+                  (previous, current) =>
+                      current is SignInLoadingState ||
+                      current is SignInErrorState ||
+                      current is SignInSuccessState,
               builder: (context, state) {
                 return state is SignInLoadingState
                     ? Center(
@@ -105,25 +109,6 @@ class SignInForm extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 30.h),
-          TextButton(
-            onPressed: () {
-              viewModel.doIntent(NavigateToSignUpScreenAction());
-            },
-            child: Text(
-              AppLocalizations.of(context)!.createNewAccount,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ),
-          SizedBox(height: 65.h),
-          Text(
-            AppLocalizations.of(context)!.orContinueWith,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          SizedBox(height: 20.h),
         ],
       ),
     );

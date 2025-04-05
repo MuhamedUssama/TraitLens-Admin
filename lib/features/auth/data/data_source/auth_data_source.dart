@@ -8,11 +8,6 @@ abstract interface class AuthDataSource {
     required String password,
   });
 
-  Future<Either<ServerException, UserEntity>> signUpWithEmailAndPassword({
-    required String email,
-    required String password,
-  });
-
   Future<Either<ServerException, String>> verifyAccount();
 
   Future<Either<ServerException, String>> forgetPassword({

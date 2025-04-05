@@ -23,28 +23,12 @@ import '../../features/auth/domain/use_cases/forget_password_usecase.dart'
 import '../../features/auth/domain/use_cases/sign_in_with_email_and_password_usecase.dart'
     as _i780;
 import '../../features/auth/domain/use_cases/sign_out_usecase.dart' as _i399;
-import '../../features/auth/domain/use_cases/sign_up_with_email_and_password_usecase.dart'
-    as _i217;
 import '../../features/auth/domain/use_cases/verify_account_usecase.dart'
     as _i3;
 import '../../features/auth/view/view_models/forget_password_view_model/forget_password_view_model.dart'
     as _i247;
 import '../../features/auth/view/view_models/sign_in_view_model/sign_in_view_model.dart'
     as _i615;
-import '../../features/auth/view/view_models/sign_up_view_model/sign_up_view_model.dart'
-    as _i195;
-import '../../features/fill_profile/data/data_source/fill_profile_data_source.dart'
-    as _i760;
-import '../../features/fill_profile/data/data_source_impl/fill_profile_data_source_impl.dart'
-    as _i186;
-import '../../features/fill_profile/data/repository_impl/fill_profile_repository_impl.dart'
-    as _i325;
-import '../../features/fill_profile/domain/repository/fill_profile_repository.dart'
-    as _i89;
-import '../../features/fill_profile/domain/usecases/fill_profile_data_usecase.dart'
-    as _i49;
-import '../../features/fill_profile/view/view_models/fill_profile_view_model.dart'
-    as _i471;
 import '../../features/home/view_model/home_screen_view_model.dart' as _i666;
 import '../cache/shared_preferences.dart' as _i254;
 
@@ -60,17 +44,8 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i254.SharedPreferencesHelper(),
     );
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
-    gh.factory<_i760.FillProfileDataSource>(
-      () => _i186.FillProfileDataSourceImpl(),
-    );
-    gh.factory<_i89.FillProfileRepository>(
-      () => _i325.FillProfileRepositoryImpl(gh<_i760.FillProfileDataSource>()),
-    );
     gh.factory<_i961.AuthRepository>(
       () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()),
-    );
-    gh.factory<_i49.FillProfileDataUsecase>(
-      () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()),
     );
     gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(
       () => _i780.SignInWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()),
@@ -78,27 +53,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i399.SignOutUsecase>(
       () => _i399.SignOutUsecase(gh<_i961.AuthRepository>()),
     );
-    gh.factory<_i217.SignUpWithEmailAndPasswordUsecase>(
-      () => _i217.SignUpWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()),
-    );
     gh.factory<_i3.VerifyAccountUsecase>(
       () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()),
     );
     gh.factory<_i27.ForgetPasswordUsecase>(
       () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()),
     );
-    gh.factory<_i471.FillProfileViewModel>(
-      () => _i471.FillProfileViewModel(gh<_i49.FillProfileDataUsecase>()),
-    );
     gh.factory<_i615.SignInViewModel>(
       () =>
           _i615.SignInViewModel(gh<_i780.SignInWithEmailAndPasswordUsecase>()),
-    );
-    gh.factory<_i195.SignUpViewModel>(
-      () => _i195.SignUpViewModel(
-        gh<_i217.SignUpWithEmailAndPasswordUsecase>(),
-        gh<_i3.VerifyAccountUsecase>(),
-      ),
     );
     gh.factory<_i247.ForgetPasswordViewModel>(
       () => _i247.ForgetPasswordViewModel(gh<_i27.ForgetPasswordUsecase>()),

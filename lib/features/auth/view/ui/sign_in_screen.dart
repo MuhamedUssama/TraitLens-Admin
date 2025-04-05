@@ -5,7 +5,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:trait_lens_admin/core/di/di.dart';
 import 'package:trait_lens_admin/core/theme/app_theme.dart';
 import 'package:trait_lens_admin/features/auth/view/ui/forget_password_screen.dart';
-import 'package:trait_lens_admin/features/auth/view/ui/sign_up_screen.dart';
 import 'package:trait_lens_admin/features/home/home_screen.dart';
 
 import '../../../../core/utils/app_assets.dart';
@@ -72,12 +71,6 @@ class _SignInScreenState extends State<SignInScreen> {
                           message: state.errorMessage,
                           context: context,
                           posActionTitle: locale.ok,
-                        );
-                      }
-                      if (state is NavigateToSignUpScreenState) {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          SignUpScreen.routeName,
                         );
                       }
                       if (state is NavigateToForgetPasswordScreenState) {

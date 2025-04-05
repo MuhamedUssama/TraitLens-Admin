@@ -22,26 +22,6 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<ServerException, UserEntity>> signUpWithEmailAndPassword({
-    required String email,
-    required String password,
-  }) async {
-    if (await _checkInternetConnection()) {
-      final either = await _authDataSource.signUpWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      return either.fold(
-        (error) => left(ServerException(error.toString())),
-        (user) => right(user),
-      );
-    } else {
-      return left(const NoInternetConnectionException());
-    }
-  }
-
-  @override
   Future<Either<ServerException, String>> verifyAccount() async {
     if (await _checkInternetConnection()) {
       final either = await _authDataSource.verifyAccount();

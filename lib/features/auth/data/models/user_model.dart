@@ -11,7 +11,7 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> map) => UserModel(
     id: map['id'],
     email: map['email'],
-    role: map['role'] ?? 'admin',
+    role: (map['role'] as String?) ?? 'user',
   );
 
   Map<String, dynamic> toJson() => {'id': id, 'email': email, 'role': role};

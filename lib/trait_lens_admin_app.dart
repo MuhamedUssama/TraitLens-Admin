@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -34,9 +35,14 @@ class TraitLensAdmin extends StatelessWidget {
             ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
             HomeScreen.routeName: (_) => HomeScreen(),
           },
-          initialRoute: SignInScreen.routeName,
+          initialRoute: _getInitialRoute(),
         );
       },
     );
+  }
+
+  String _getInitialRoute() {
+    final user = FirebaseAuth.instance.currentUser;
+    return user != null ? HomeScreen.routeName : SignInScreen.routeName;
   }
 }

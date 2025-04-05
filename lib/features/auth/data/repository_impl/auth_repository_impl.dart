@@ -1,7 +1,7 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trait_lens_admin/core/errors/exceptions.dart';
+import 'package:trait_lens_admin/core/helpers/connectivity_helper.dart';
 import 'package:trait_lens_admin/features/auth/domain/entities/user_entity.dart';
 
 import '../../domain/repository/auth_repository.dart';
@@ -14,16 +14,9 @@ class AuthRepositoryImpl implements AuthRepository {
   @factoryMethod
   AuthRepositoryImpl(this._authDataSource);
 
-  Future<bool> _checkInternetConnection() async {
-    final List<ConnectivityResult> connectivityResult =
-        await (Connectivity().checkConnectivity());
-    return (connectivityResult.contains(ConnectivityResult.mobile) ||
-        connectivityResult.contains(ConnectivityResult.wifi));
-  }
-
   @override
   Future<Either<ServerException, String>> verifyAccount() async {
-    if (await _checkInternetConnection()) {
+    if (await ConnectivityHelper.checkInternetConnection()) {
       final either = await _authDataSource.verifyAccount();
 
       return either.fold(
@@ -40,7 +33,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    if (await _checkInternetConnection()) {
+    if (await ConnectivityHelper.checkInternetConnection()) {
       final either = await _authDataSource.signInWithEmailAndPassword(
         email: email,
         password: password,
@@ -59,7 +52,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<ServerException, String>> forgetPassword({
     required String email,
   }) async {
-    if (await _checkInternetConnection()) {
+    if (await ConnectivityHelper.checkInternetConnection()) {
       final either = await _authDataSource.forgetPassword(email: email);
 
       return either.fold(

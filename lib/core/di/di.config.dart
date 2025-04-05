@@ -36,6 +36,8 @@ import '../../features/tabs/users/data/repositories/users_repository.dart'
     as _i621;
 import '../../features/tabs/users/data/repositories_impl/users_repository_impl.dart'
     as _i650;
+import '../../features/tabs/users/view/view_models/users_tab_view_model/users_tab_view_model.dart'
+    as _i947;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -52,6 +54,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.factory<_i621.UsersRepository>(
       () => _i650.UsersRepositoryImpl(gh<_i685.UsersRemoteDataSource>()),
+    );
+    gh.factory<_i947.UsersTabViewModel>(
+      () => _i947.UsersTabViewModel(gh<_i621.UsersRepository>()),
     );
     gh.factory<_i961.AuthRepository>(
       () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()),

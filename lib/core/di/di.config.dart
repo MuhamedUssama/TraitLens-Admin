@@ -30,6 +30,12 @@ import '../../features/auth/view/view_models/forget_password_view_model/forget_p
 import '../../features/auth/view/view_models/sign_in_view_model/sign_in_view_model.dart'
     as _i615;
 import '../../features/home/view_model/home_screen_view_model.dart' as _i666;
+import '../../features/tabs/users/data/data_sources/users_remote_data_source.dart'
+    as _i685;
+import '../../features/tabs/users/data/repositories/users_repository.dart'
+    as _i621;
+import '../../features/tabs/users/data/repositories_impl/users_repository_impl.dart'
+    as _i650;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -44,6 +50,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i254.SharedPreferencesHelper(),
     );
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.factory<_i621.UsersRepository>(
+      () => _i650.UsersRepositoryImpl(gh<_i685.UsersRemoteDataSource>()),
+    );
     gh.factory<_i961.AuthRepository>(
       () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()),
     );

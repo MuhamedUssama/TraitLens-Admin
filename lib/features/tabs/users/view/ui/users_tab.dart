@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trait_lens_admin/core/di/di.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/view_models/users_tab_view_model/users_tab_states.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/view_models/users_tab_view_model/users_tab_view_model.dart';
+import 'package:trait_lens_admin/features/tabs/users/view/widgets/card_loading_widget.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/widgets/custom_search_field.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/widgets/user_card_widget.dart';
 
@@ -26,7 +27,14 @@ class UsersTab extends StatelessWidget {
             bloc: viewModel,
             builder: (context, state) {
               if (state is UsersTabLoadingState) {
-                return Center(child: CircularProgressIndicator());
+                return Expanded(
+                  child: ListView.separated(
+                    separatorBuilder:
+                        (context, index) => SizedBox(height: 12.h),
+                    itemBuilder: (context, index) => CardLoadingWidget(),
+                    itemCount: 8,
+                  ),
+                );
               }
               if (state is UsersTabErrorState) {
                 log(state.errorMessage);

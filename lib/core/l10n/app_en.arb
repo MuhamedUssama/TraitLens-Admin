@@ -50,5 +50,6 @@
   "camera": "Camera",
   "gallery": "Gallery",
   "chooseOption": "Choose option",
-  "traitLengs": "TraitsLens"
+  "traitLengs": "TraitsLens",
+  "search": "Search"
 }

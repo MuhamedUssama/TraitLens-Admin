@@ -15,6 +15,42 @@ class AppTheme {
     scaffoldBackgroundColor: white,
     primaryColor: primary,
 
+    appBarTheme: AppBarTheme(backgroundColor: white),
+
+    cardTheme: CardTheme(
+      color: lightBlue,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+    ),
+
+    listTileTheme: ListTileThemeData(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      tileColor: lightBlue,
+      textColor: grey,
+      titleTextStyle: GoogleFonts.poppins(
+        fontSize: 12.sp,
+        color: grey,
+        fontWeight: FontWeight.w600,
+      ),
+      subtitleTextStyle: GoogleFonts.poppins(
+        fontSize: 8.sp,
+        color: grey,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+
+    filledButtonTheme: FilledButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(primary),
+        foregroundColor: WidgetStateProperty.all(white),
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+        ),
+        padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+          EdgeInsets.symmetric(vertical: 8.h, horizontal: 10.w),
+        ),
+      ),
+    ),
+
     textTheme: TextTheme(
       titleLarge: GoogleFonts.poppins(
         fontSize: 18.sp,
@@ -38,6 +74,11 @@ class AppTheme {
       ),
       labelLarge: GoogleFonts.poppins(
         fontSize: 20.sp,
+        color: white,
+        fontWeight: FontWeight.w600,
+      ),
+      labelSmall: GoogleFonts.poppins(
+        fontSize: 10.sp,
         color: white,
         fontWeight: FontWeight.w600,
       ),
@@ -69,6 +110,7 @@ class AppTheme {
       filled: true,
       fillColor: textFieldBackground,
       suffixIconColor: grey,
+      prefixIconColor: grey,
 
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.r),

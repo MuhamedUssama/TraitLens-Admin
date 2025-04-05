@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trait_lens_admin/features/tabs/users/data/repositories/users_repository.dart';
@@ -10,6 +11,8 @@ class UsersTabViewModel extends Cubit<UsersTabStates> {
 
   @factoryMethod
   UsersTabViewModel(this._usersRepository) : super(UsersTabInitialState());
+
+  TextEditingController searchController = TextEditingController();
 
   Future<void> getAllUsers() async {
     emit(UsersTabLoadingState());

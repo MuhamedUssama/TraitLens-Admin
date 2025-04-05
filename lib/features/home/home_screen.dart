@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trait_lens_admin/core/di/di.dart';
 
 import 'view_model/home_screen_view_model.dart';
@@ -17,6 +18,14 @@ class HomeScreen extends StatelessWidget {
       bloc: viewModel,
       builder: (context, state) {
         return Scaffold(
+          appBar: AppBar(
+            title: Text('TraitLens'),
+
+            titleTextStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontSize: 30.sp,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           body: IndexedStack(
             index: viewModel.currentIndex,
             children: viewModel.tabs,

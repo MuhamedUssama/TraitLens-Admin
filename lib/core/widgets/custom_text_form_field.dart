@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 typedef Validator = String? Function(String?);
 
 class CustomTextFormField extends StatelessWidget {
-  final String labelText;
+  final String? labelText;
   final String hintText;
   final String? initialValue;
   final TextEditingController controller;
   final Validator? validator;
   final bool obscureText;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
+  final bool? filled;
 
   const CustomTextFormField({
     super.key,
@@ -19,11 +21,13 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.obscureText = false,
     this.suffixIcon,
-    required this.labelText,
+    this.labelText,
     required this.hintText,
     required this.textInputAction,
     required this.keyboardType,
     this.initialValue,
+    this.prefixIcon,
+    this.filled,
   });
 
   @override
@@ -37,8 +41,10 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       validator: validator,
       decoration: InputDecoration(
+        filled: filled,
         labelText: labelText,
         hintText: hintText,
+        prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
       ),
     );

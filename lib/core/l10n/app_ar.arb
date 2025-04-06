@@ -52,5 +52,9 @@
   "chooseOption": "اختر",
   "traitLengs": "TraitsLens",
   "search": "بحث",
-  "moreDetails": "المزيد من التفاصيل"
+  "moreDetails": "المزيد من التفاصيل",
+  "notificationTitle": "عنوان الإشعار",
+  "notificationTitleHint": "أدخل عنوان الإشعار",
+  "notificationDescriptionHint": "أدخل وصف الإشعار",
+  "notifcationDescription": "وصف الإشعار"
 }

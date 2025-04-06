@@ -10,7 +10,7 @@ class BackgroundImageLoadingWidget extends StatelessWidget {
     return Shimmer.fromColors(
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
-      child: SliverAppBar(expandedHeight: 240.h),
+      child: SizedBox(height: 260.h),
     );
   }
 }

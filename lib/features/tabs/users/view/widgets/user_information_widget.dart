@@ -37,11 +37,15 @@ class UserInformationWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  user.email ?? '',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w500),
+                Flexible(
+                  child: Text(
+                    user.email ?? '',
+                    maxLines: 2,
+                    overflow: TextOverflow.clip,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
                 Text(
                   user.gender ?? '',

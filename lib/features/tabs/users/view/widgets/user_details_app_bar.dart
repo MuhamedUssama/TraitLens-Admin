@@ -13,7 +13,7 @@ class UserDetailsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 240.h,
+      expandedHeight: 260.h,
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios, color: AppTheme.black),
         onPressed: () => Navigator.pop(context),

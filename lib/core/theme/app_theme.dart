@@ -15,7 +15,10 @@ class AppTheme {
     scaffoldBackgroundColor: white,
     primaryColor: primary,
 
-    appBarTheme: AppBarTheme(backgroundColor: white),
+    appBarTheme: AppBarTheme(
+      backgroundColor: white,
+      iconTheme: IconThemeData(color: black),
+    ),
 
     indicatorColor: primary,
 
@@ -69,6 +72,16 @@ class AppTheme {
         fontSize: 16.sp,
         color: black,
         fontWeight: FontWeight.w400,
+      ),
+      headlineLarge: GoogleFonts.poppins(
+        fontSize: 28.sp,
+        color: primary,
+        fontWeight: FontWeight.w600,
+      ),
+      bodyLarge: GoogleFonts.poppins(
+        fontSize: 20.sp,
+        color: black,
+        fontWeight: FontWeight.bold,
       ),
       bodySmall: GoogleFonts.poppins(
         fontSize: 14.sp,

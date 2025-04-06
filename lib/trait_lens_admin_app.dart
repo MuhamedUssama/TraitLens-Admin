@@ -7,6 +7,7 @@ import 'package:trait_lens_admin/core/theme/app_theme.dart';
 import 'package:trait_lens_admin/features/auth/view/ui/forget_password_screen.dart';
 import 'package:trait_lens_admin/features/auth/view/ui/sign_in_screen.dart';
 import 'package:trait_lens_admin/features/home/home_screen.dart';
+import 'package:trait_lens_admin/features/tabs/users/view/ui/user_details_screen.dart';
 
 class TraitLensAdmin extends StatelessWidget {
   const TraitLensAdmin({super.key});
@@ -34,6 +35,7 @@ class TraitLensAdmin extends StatelessWidget {
             SignInScreen.routeName: (_) => SignInScreen(),
             ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
             HomeScreen.routeName: (_) => HomeScreen(),
+            UserDetailsScreen.routeName: (_) => UserDetailsScreen(),
           },
           initialRoute: _getInitialRoute(),
         );

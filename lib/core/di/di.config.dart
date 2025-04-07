@@ -30,6 +30,12 @@ import '../../features/auth/view/view_models/forget_password_view_model/forget_p
 import '../../features/auth/view/view_models/sign_in_view_model/sign_in_view_model.dart'
     as _i615;
 import '../../features/home/view_model/home_screen_view_model.dart' as _i666;
+import '../../features/tabs/notifications/data/data_source/notifications_remote_data_source.dart'
+    as _i475;
+import '../../features/tabs/notifications/data/repository/notifications_repository.dart'
+    as _i233;
+import '../../features/tabs/notifications/data/repository_impl/notifications_repository_impl.dart'
+    as _i932;
 import '../../features/tabs/users/data/data_sources/users_remote_data_source.dart'
     as _i685;
 import '../../features/tabs/users/data/repositories/users_repository.dart'
@@ -57,6 +63,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.factory<_i621.UsersRepository>(
       () => _i650.UsersRepositoryImpl(gh<_i685.UsersRemoteDataSource>()),
+    );
+    gh.factory<_i233.NotificationsRepository>(
+      () => _i932.NotificationsRepositoryImpl(
+        gh<_i475.NotificationsRemoteDataSource>(),
+      ),
     );
     gh.factory<_i947.UsersTabViewModel>(
       () => _i947.UsersTabViewModel(gh<_i621.UsersRepository>()),

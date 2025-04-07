@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:trait_lens_admin/core/constants/app_constants.dart';
@@ -57,6 +58,81 @@ class NotificationsRemoteDataSource {
     } catch (e) {
       log('❌ Exception: $e');
       return Left(ServerException(e.toString()));
+    }
+  }
+
+  Future<Either<ServerException, List<NotificationModel>>>
+  getNotifications() async {
+    try {
+      final QuerySnapshot<NotificationModel> snapshot =
+          await FireBaseService.getNotificationsCollection()
+              .orderBy('id', descending: true)
+              .get();
+
+      List<NotificationModel> notifications =
+          snapshot.docs.map((doc) => doc.data()).toList();
+
+      return Right(notifications);
+    } catch (e) {
+      log('❌ Get Notifications Error: $e');
+      return Left(ServerException('Failed to fetch notifications'));
+    }
+  }
+
+  Future<void> markNotificationAsRead(String notificationId) async {
+    try {
+      final QuerySnapshot<NotificationModel> querySnapshot =
+          await FireBaseService.getNotificationsCollection()
+              .where('id', isEqualTo: notificationId)
+              .limit(1)
+              .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        final DocumentReference<NotificationModel> docRef =
+            querySnapshot.docs.first.reference;
+
+        await docRef.update({'isRead': true});
+      }
+    } catch (e) {
+      log('❌ Mark as Read Error: $e');
+    }
+  }
+
+  Future<Either<ServerException, String>> deleteNotification(
+    String notificationId,
+  ) async {
+    try {
+      final QuerySnapshot<NotificationModel> querySnapshot =
+          await FireBaseService.getNotificationsCollection()
+              .where('id', isEqualTo: notificationId)
+              .limit(1)
+              .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        await querySnapshot.docs.first.reference.delete();
+        return Right(notificationId);
+      } else {
+        return Left(ServerException('Notification not found'));
+      }
+    } catch (e) {
+      log('❌ Delete Notification Error: $e');
+      return Left(ServerException('Failed to delete notification'));
+    }
+  }
+
+  Future<Either<ServerException, String>> deleteAllNotifications() async {
+    try {
+      final QuerySnapshot<NotificationModel> snapshot =
+          await FireBaseService.getNotificationsCollection().get();
+
+      for (QueryDocumentSnapshot<NotificationModel> doc in snapshot.docs) {
+        await doc.reference.delete();
+      }
+
+      return Right('All notifications deleted');
+    } catch (e) {
+      log('❌ Delete All Notifications Error: $e');
+      return Left(ServerException('Failed to delete all notifications'));
     }
   }
 }

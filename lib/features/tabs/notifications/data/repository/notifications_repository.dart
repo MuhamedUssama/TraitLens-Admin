@@ -8,6 +8,8 @@ abstract interface class NotificationsRepository {
   });
   Future<Either<ServerException, List<NotificationModel>>> getNotifications();
   Future<void> markNotificationAsRead(String notificationId);
-  Future<void> deleteNotification(String notificationId);
-  Future<void> deleteAllNotifications();
+  Future<Either<ServerException, String>> deleteNotification(
+    String notificationId,
+  );
+  Future<Either<ServerException, String>> deleteAllNotifications();
 }

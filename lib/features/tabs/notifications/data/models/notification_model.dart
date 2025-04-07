@@ -1,4 +1,6 @@
 class NotificationModel {
+  static const String collectionName = 'notifications';
+
   final String? id;
   final String? title;
   final String? message;

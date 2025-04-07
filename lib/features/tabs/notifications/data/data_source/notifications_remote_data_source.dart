@@ -21,16 +21,22 @@ class NotificationsRemoteDataSource {
 
       final Uri url = Uri.parse(AppConstants.firebaseEndPoint);
 
+      final docRef = FireBaseService.getNotificationsCollection().doc();
+
+      NotificationModel updatedNotification = notificationModel.copyWith(
+        id: docRef.id,
+      );
+
       final Map<String, Map<String, dynamic>> body = {
         "message": {
           "topic": AppConstants.generalTopicName,
           "notification": {
-            "title": notificationModel.title,
-            "body": notificationModel.message,
+            "title": updatedNotification.title,
+            "body": updatedNotification.message,
           },
           "data": {
-            "id": notificationModel.id ?? '',
-            "isRead": notificationModel.isRead.toString(),
+            "id": updatedNotification.id,
+            "isRead": updatedNotification.isRead.toString(),
             "click_action": "FLUTTER_NOTIFICATION_CLICK",
           },
         },
@@ -46,11 +52,8 @@ class NotificationsRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        await FireBaseService.getNotificationsCollection().add(
-          notificationModel,
-        );
-
-        return Right(notificationModel);
+        await docRef.set(updatedNotification);
+        return Right(updatedNotification);
       } else {
         log('❌ FCM Error: ${response.body}');
         return Left(ServerException('Failed to send notification'));

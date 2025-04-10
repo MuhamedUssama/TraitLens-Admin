@@ -17,3 +17,15 @@ class NotificationsTabErrorState extends NotificationsTabStates {
 
   NotificationsTabErrorState(this.error);
 }
+
+class NotificationsTabDeleteSuccessedState extends NotificationsTabStates {
+  final String notificationId;
+
+  NotificationsTabDeleteSuccessedState(this.notificationId);
+}
+
+class NotificationsTabDeleteErrorState extends NotificationsTabStates {
+  final String error;
+
+  NotificationsTabDeleteErrorState(this.error);
+}

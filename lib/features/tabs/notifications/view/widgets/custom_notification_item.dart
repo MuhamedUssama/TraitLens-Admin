@@ -3,15 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trait_lens_admin/core/theme/app_theme.dart';
+import 'package:trait_lens_admin/features/tabs/notifications/view/view_models/notifications_tab_view_model/notifications_tab_view_model.dart';
 
 class CustomNotificationItem extends StatelessWidget {
   final String title;
   final String message;
+  final String notificationId;
+  final NotificationsTabViewModel viewModel;
 
   const CustomNotificationItem({
     super.key,
     required this.title,
     required this.message,
+    required this.notificationId,
+    required this.viewModel,
   });
 
   @override
@@ -21,7 +26,9 @@ class CustomNotificationItem extends StatelessWidget {
         motion: StretchMotion(),
         children: [
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) {
+              viewModel.deleteNotification(notificationId);
+            },
             backgroundColor: AppTheme.red,
             foregroundColor: AppTheme.white,
             icon: Icons.delete,

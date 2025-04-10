@@ -22,4 +22,18 @@ class NotificationsTabViewModel extends Cubit<NotificationsTabStates> {
       (notifications) => emit(NotificationsTabLoadedState(notifications)),
     );
   }
+
+  Future<void> deleteNotification(String notificationId) async {
+    emit(NotificationsTabLoadingState());
+    final result = await _notificationsRepository.deleteNotification(
+      notificationId,
+    );
+    result.fold(
+      (error) => emit(NotificationsTabDeleteErrorState(error.toString())),
+      (_) {
+        getAllNotifications();
+        emit(NotificationsTabDeleteSuccessedState('Notification deleted'));
+      },
+    );
+  }
 }

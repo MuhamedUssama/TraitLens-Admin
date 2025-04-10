@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:trait_lens_admin/core/models/user_details_model.dart';
 import 'package:trait_lens_admin/features/auth/data/models/user_model.dart';
+import 'package:trait_lens_admin/features/tabs/notifications/data/models/notification_model.dart';
 
 class FireBaseService {
   static CollectionReference<UserModel> getUsersCollection() {
@@ -29,5 +30,14 @@ class FireBaseService {
               toFirestore: (userProfile, options) => userProfile.toJson(),
             );
     return userProfileCollection;
+  }
+
+  static CollectionReference<NotificationModel> getNotificationsCollection() {
+    return FirebaseFirestore.instance
+        .collection(NotificationModel.collectionName)
+        .withConverter<NotificationModel>(
+          fromFirestore: (doc, _) => NotificationModel.fromJson(doc.data()!),
+          toFirestore: (notif, _) => notif.toJson(),
+        );
   }
 }

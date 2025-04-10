@@ -30,6 +30,16 @@ import '../../features/auth/view/view_models/forget_password_view_model/forget_p
 import '../../features/auth/view/view_models/sign_in_view_model/sign_in_view_model.dart'
     as _i615;
 import '../../features/home/view_model/home_screen_view_model.dart' as _i666;
+import '../../features/tabs/notifications/data/data_source/notifications_remote_data_source.dart'
+    as _i475;
+import '../../features/tabs/notifications/data/repository/notifications_repository.dart'
+    as _i233;
+import '../../features/tabs/notifications/data/repository_impl/notifications_repository_impl.dart'
+    as _i932;
+import '../../features/tabs/notifications/view/view_models/add_notification_screen_view_model/add_notifications_view_model.dart'
+    as _i158;
+import '../../features/tabs/notifications/view/view_models/notifications_tab_view_model/notifications_tab_view_model.dart'
+    as _i474;
 import '../../features/tabs/users/data/data_sources/users_remote_data_source.dart'
     as _i685;
 import '../../features/tabs/users/data/repositories/users_repository.dart'
@@ -51,6 +61,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
       () => _i254.SharedPreferencesHelper(),
     );
+    gh.lazySingleton<_i475.NotificationsRemoteDataSource>(
+      () => _i475.NotificationsRemoteDataSource(),
+    );
     gh.lazySingleton<_i685.UsersRemoteDataSource>(
       () => _i685.UsersRemoteDataSource(),
     );
@@ -58,11 +71,24 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i621.UsersRepository>(
       () => _i650.UsersRepositoryImpl(gh<_i685.UsersRemoteDataSource>()),
     );
+    gh.factory<_i233.NotificationsRepository>(
+      () => _i932.NotificationsRepositoryImpl(
+        gh<_i475.NotificationsRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i947.UsersTabViewModel>(
       () => _i947.UsersTabViewModel(gh<_i621.UsersRepository>()),
     );
     gh.factory<_i961.AuthRepository>(
       () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()),
+    );
+    gh.factory<_i158.AddNotificationsViewModel>(
+      () =>
+          _i158.AddNotificationsViewModel(gh<_i233.NotificationsRepository>()),
+    );
+    gh.factory<_i474.NotificationsTabViewModel>(
+      () =>
+          _i474.NotificationsTabViewModel(gh<_i233.NotificationsRepository>()),
     );
     gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(
       () => _i780.SignInWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()),

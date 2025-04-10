@@ -20,6 +20,13 @@ class AppTheme {
       iconTheme: IconThemeData(color: black),
     ),
 
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: lightBlue,
+      foregroundColor: primary,
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+    ),
+
     indicatorColor: primary,
 
     cardTheme: CardTheme(

@@ -52,5 +52,10 @@
   "chooseOption": "Choose option",
   "traitLengs": "TraitsLens",
   "search": "Search",
-  "moreDetails": "more details"
+  "moreDetails": "more details",
+  "notificationTitle": "Notification Title",
+  "notificationTitleHint": "Enter notification title",
+  "notificationDescriptionHint": "Enter notification description",
+  "notifcationDescription": "Notification Description",
+  "notificationSentSuccessfully": "Notification sent successfully."
 }

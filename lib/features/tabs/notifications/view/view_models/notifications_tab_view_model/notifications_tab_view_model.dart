@@ -10,7 +10,9 @@ class NotificationsTabViewModel extends Cubit<NotificationsTabStates> {
 
   @factoryMethod
   NotificationsTabViewModel(this._notificationsRepository)
-    : super(NotificationsTabInitialState());
+    : super(NotificationsTabInitialState()) {
+    getAllNotifications();
+  }
 
   Future<void> getAllNotifications() async {
     emit(NotificationsTabLoadingState());

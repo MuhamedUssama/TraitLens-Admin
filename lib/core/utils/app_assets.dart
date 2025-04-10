@@ -17,5 +17,5 @@ class AppSvg {
 }
 
 class AppIcons {
-  static const String results = 'assets/icons/results.png';
+  static const String notification = 'assets/icons/notification.svg';
 }

@@ -16,36 +16,40 @@ class NotificationsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: BlocBuilder<NotificationsTabViewModel, NotificationsTabStates>(
-        bloc: viewModel,
-        builder: (context, state) {
-          if (state is NotificationsTabLoadingState) {
-            return ListView.separated(
-              itemBuilder:
-                  (context, index) => const CustomNotificationLoadingItem(),
-              separatorBuilder: (context, index) => Divider(),
-              itemCount: 8,
-            );
-          } else if (state is NotificationsTabErrorState) {
-            return Center(child: Text(state.error));
-          } else if (state is NotificationsTabLoadedState) {
-            return ListView.separated(
-              itemCount: state.notifications.length,
-              separatorBuilder: (context, index) => Divider(),
-              itemBuilder: (context, index) {
-                NotificationModel notification = state.notifications[index];
-                return CustomNotificationItem(
-                  title: notification.title ?? '',
-                  message: notification.message ?? '',
-                );
-              },
-            );
-          } else {
-            return const Center(child: Text('No notifications available'));
-          }
-        },
+    return RefreshIndicator(
+      color: Theme.of(context).primaryColor,
+      onRefresh: () => viewModel.getAllNotifications(),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: BlocBuilder<NotificationsTabViewModel, NotificationsTabStates>(
+          bloc: viewModel,
+          builder: (context, state) {
+            if (state is NotificationsTabLoadingState) {
+              return ListView.separated(
+                itemBuilder:
+                    (context, index) => const CustomNotificationLoadingItem(),
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: 8,
+              );
+            } else if (state is NotificationsTabErrorState) {
+              return Center(child: Text(state.error));
+            } else if (state is NotificationsTabLoadedState) {
+              return ListView.separated(
+                itemCount: state.notifications.length,
+                separatorBuilder: (context, index) => Divider(),
+                itemBuilder: (context, index) {
+                  NotificationModel notification = state.notifications[index];
+                  return CustomNotificationItem(
+                    title: notification.title ?? '',
+                    message: notification.message ?? '',
+                  );
+                },
+              );
+            } else {
+              return const Center(child: Text('No notifications available'));
+            }
+          },
+        ),
       ),
     );
   }

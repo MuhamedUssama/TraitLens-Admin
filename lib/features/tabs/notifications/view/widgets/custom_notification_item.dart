@@ -25,7 +25,6 @@ class CustomNotificationItem extends StatelessWidget {
             backgroundColor: AppTheme.red,
             foregroundColor: AppTheme.white,
             icon: Icons.delete,
-            label: 'Delete',
             borderRadius: BorderRadius.horizontal(right: Radius.circular(16.r)),
           ),
         ],

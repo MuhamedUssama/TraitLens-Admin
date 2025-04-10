@@ -38,6 +38,8 @@ import '../../features/tabs/notifications/data/repository_impl/notifications_rep
     as _i932;
 import '../../features/tabs/notifications/view/view_models/add_notification_screen_view_model/add_notifications_view_model.dart'
     as _i158;
+import '../../features/tabs/notifications/view/view_models/notifications_tab_view_model/notifications_tab_view_model.dart'
+    as _i474;
 import '../../features/tabs/users/data/data_sources/users_remote_data_source.dart'
     as _i685;
 import '../../features/tabs/users/data/repositories/users_repository.dart'
@@ -83,6 +85,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i158.AddNotificationsViewModel>(
       () =>
           _i158.AddNotificationsViewModel(gh<_i233.NotificationsRepository>()),
+    );
+    gh.factory<_i474.NotificationsTabViewModel>(
+      () =>
+          _i474.NotificationsTabViewModel(gh<_i233.NotificationsRepository>()),
     );
     gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(
       () => _i780.SignInWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()),

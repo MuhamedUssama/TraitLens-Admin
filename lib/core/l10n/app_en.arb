@@ -56,5 +56,6 @@
   "notificationTitle": "Notification Title",
   "notificationTitleHint": "Enter notification title",
   "notificationDescriptionHint": "Enter notification description",
-  "notifcationDescription": "Notification Description"
+  "notifcationDescription": "Notification Description",
+  "notificationSentSuccessfully": "Notification sent successfully."
 }

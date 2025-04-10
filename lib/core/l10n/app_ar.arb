@@ -56,5 +56,6 @@
   "notificationTitle": "عنوان الإشعار",
   "notificationTitleHint": "أدخل عنوان الإشعار",
   "notificationDescriptionHint": "أدخل وصف الإشعار",
-  "notifcationDescription": "وصف الإشعار"
+  "notifcationDescription": "وصف الإشعار",
+  "notificationSentSuccessfully": "تم إرسال الإشعار بنجاح."
 }

@@ -43,6 +43,7 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       validator: validator,
       maxLines: maxLines,
+      style: Theme.of(context).textTheme.titleSmall,
       decoration: InputDecoration(
         filled: filled,
         labelText: labelText,

@@ -3,12 +3,14 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import 'package:trait_lens_admin/core/constants/app_constants.dart';
 import 'package:trait_lens_admin/core/errors/exceptions.dart';
 import 'package:trait_lens_admin/core/helpers/firebase_auth_helper.dart';
 import 'package:trait_lens_admin/core/utils/firebase_services.dart';
 import 'package:trait_lens_admin/features/tabs/notifications/data/models/notification_model.dart';
 
+@lazySingleton
 class NotificationsRemoteDataSource {
   Future<Either<ServerException, NotificationModel>> createNotification({
     required NotificationModel notificationModel,

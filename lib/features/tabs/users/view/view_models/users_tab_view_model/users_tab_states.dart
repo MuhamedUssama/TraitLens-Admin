@@ -11,6 +11,13 @@ class UsersTabLoadedState extends UsersTabStates {
   UsersTabLoadedState(this.usersList);
 }
 
+class UsersTabSearchLoadingState extends UsersTabStates {}
+
+class UserTabSearchSuccessState extends UsersTabStates {
+  final List<UserDetailsModel> usersList;
+  UserTabSearchSuccessState(this.usersList);
+}
+
 class UsersTabErrorState extends UsersTabStates {
   final String errorMessage;
   UsersTabErrorState(this.errorMessage);

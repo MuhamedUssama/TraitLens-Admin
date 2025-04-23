@@ -1,24 +1,51 @@
+import 'package:equatable/equatable.dart';
 import 'package:trait_lens_admin/core/models/user_details_model.dart';
 
-abstract class UsersTabStates {}
+abstract class UsersTabStates extends Equatable {
+  const UsersTabStates();
 
-class UsersTabInitialState extends UsersTabStates {}
+  @override
+  List<Object?> get props => [];
+}
 
-class UsersTabLoadingState extends UsersTabStates {}
+class UsersTabInitialState extends UsersTabStates {
+  @override
+  List<Object?> get props => [];
+}
+
+class UsersTabLoadingState extends UsersTabStates {
+  @override
+  List<Object?> get props => [];
+}
 
 class UsersTabLoadedState extends UsersTabStates {
   final List<UserDetailsModel> usersList;
-  UsersTabLoadedState(this.usersList);
+
+  const UsersTabLoadedState(this.usersList);
+
+  @override
+  List<Object?> get props => [usersList];
 }
 
-class UsersTabSearchLoadingState extends UsersTabStates {}
+class UsersTabSearchLoadingState extends UsersTabStates {
+  @override
+  List<Object?> get props => [];
+}
 
 class UserTabSearchSuccessState extends UsersTabStates {
   final List<UserDetailsModel> usersList;
-  UserTabSearchSuccessState(this.usersList);
+
+  const UserTabSearchSuccessState(this.usersList);
+
+  @override
+  List<Object?> get props => [usersList];
 }
 
 class UsersTabErrorState extends UsersTabStates {
   final String errorMessage;
-  UsersTabErrorState(this.errorMessage);
+
+  const UsersTabErrorState(this.errorMessage);
+
+  @override
+  List<Object?> get props => [errorMessage];
 }

@@ -39,7 +39,7 @@ class UserInformationWidget extends StatelessWidget {
               children: [
                 Flexible(
                   child: Text(
-                    user.email ?? '',
+                    user.email ?? 'No email found',
                     maxLines: 2,
                     overflow: TextOverflow.clip,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(

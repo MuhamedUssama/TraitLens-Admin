@@ -66,9 +66,9 @@ class UsersTabViewModel extends Cubit<UsersTabStates> {
     if (query.isEmpty) {
       emit(UsersTabLoadedState(_allUsers));
     } else {
-      final filteredUsers =
+      final List<UserDetailsModel> filteredUsers =
           _allUsers.where((user) {
-            final fullName = user.fullName?.toLowerCase() ?? '';
+            final String fullName = user.fullName?.toLowerCase() ?? '';
             return fullName.contains(query.toLowerCase());
           }).toList();
 

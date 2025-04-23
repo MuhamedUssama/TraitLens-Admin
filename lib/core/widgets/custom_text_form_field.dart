@@ -29,7 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     this.initialValue,
     this.prefixIcon,
     this.filled,
-    this.maxLines,
+    this.maxLines = 1,
   });
 
   @override

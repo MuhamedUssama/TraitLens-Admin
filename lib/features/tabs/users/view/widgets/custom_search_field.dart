@@ -16,6 +16,7 @@ class CustomSearchField extends StatelessWidget {
       controller: controller,
       textInputAction: TextInputAction.search,
       keyboardType: TextInputType.text,
+      style: Theme.of(context).textTheme.titleSmall,
       decoration: InputDecoration(
         filled: false,
         hintText: locale.search,

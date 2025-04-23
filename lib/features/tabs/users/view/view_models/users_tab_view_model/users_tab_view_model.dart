@@ -56,6 +56,10 @@ class UsersTabViewModel extends Cubit<UsersTabStates> {
     });
   }
 
+  void submitSearch(String query) {
+    _performSearch(query.trim());
+  }
+
   void _performSearch(String query) {
     emit(UsersTabSearchLoadingState());
 

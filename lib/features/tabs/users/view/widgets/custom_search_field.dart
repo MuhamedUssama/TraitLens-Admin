@@ -6,11 +6,13 @@ import 'package:trait_lens_admin/core/theme/app_theme.dart';
 class CustomSearchField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
 
   const CustomSearchField({
     super.key,
     required this.controller,
     this.onChanged,
+    this.onSubmitted,
   });
 
   @override
@@ -23,6 +25,7 @@ class CustomSearchField extends StatelessWidget {
       keyboardType: TextInputType.text,
       style: Theme.of(context).textTheme.titleSmall,
       onChanged: onChanged,
+      onSubmitted: onSubmitted,
       decoration: InputDecoration(
         filled: false,
         hintText: locale.search,

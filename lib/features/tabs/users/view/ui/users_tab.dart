@@ -26,6 +26,7 @@ class UsersTab extends StatelessWidget {
           CustomSearchField(
             controller: viewModel.searchController,
             onChanged: (value) => viewModel.searchUsers(value),
+            onSubmitted: (value) => viewModel.submitSearch(value),
           ),
           SizedBox(height: 32.h),
           BlocBuilder<UsersTabViewModel, UsersTabStates>(

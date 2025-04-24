@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,44 +18,60 @@ class CustomNotificationsForm extends StatelessWidget {
     return Form(
       key: viewModel.formKey,
       child: Column(
-        spacing: 16.h,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            locale.notificationTitle,
-            style: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+          FadeInDown(
+            duration: Duration(milliseconds: 600),
+            child: Text(
+              locale.notificationTitle,
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+            ),
           ),
-          CustomTextFormField(
-            controller: viewModel.titleController,
-            hintText: locale.notificationTitleHint,
-            textInputAction: TextInputAction.next,
-            keyboardType: TextInputType.text,
-            validator:
-                (value) => AppValidator.validateFieldIsNotEmpty(
-                  message: locale.emptyField,
-                  value: value,
-                ),
+          SizedBox(height: 16.h),
+          FadeInUp(
+            duration: Duration(milliseconds: 600),
+            delay: Duration(milliseconds: 200),
+            child: CustomTextFormField(
+              controller: viewModel.titleController,
+              hintText: locale.notificationTitleHint,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.text,
+              validator:
+                  (value) => AppValidator.validateFieldIsNotEmpty(
+                    message: locale.emptyField,
+                    value: value,
+                  ),
+            ),
           ),
-          SizedBox(height: 8.h),
-          Text(
-            locale.notifcationDescription,
-            style: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+          SizedBox(height: 24.h),
+          FadeInDown(
+            duration: Duration(milliseconds: 600),
+            delay: Duration(milliseconds: 400),
+            child: Text(
+              locale.notifcationDescription,
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+            ),
           ),
-          CustomTextFormField(
-            maxLines: 5,
-            controller: viewModel.descriptionController,
-            hintText: locale.notificationDescriptionHint,
-            textInputAction: TextInputAction.done,
-            keyboardType: TextInputType.text,
-            validator:
-                (value) => AppValidator.validateFieldIsNotEmpty(
-                  message: locale.emptyField,
-                  value: value,
-                ),
+          SizedBox(height: 16.h),
+          FadeInUp(
+            duration: Duration(milliseconds: 600),
+            delay: Duration(milliseconds: 600),
+            child: CustomTextFormField(
+              maxLines: 5,
+              controller: viewModel.descriptionController,
+              hintText: locale.notificationDescriptionHint,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.text,
+              validator:
+                  (value) => AppValidator.validateFieldIsNotEmpty(
+                    message: locale.emptyField,
+                    value: value,
+                  ),
+            ),
           ),
         ],
       ),

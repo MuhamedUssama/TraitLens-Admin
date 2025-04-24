@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,9 +49,16 @@ class AddNotificationsScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: height * .04),
-                CustomNotificationsForm(viewModel: viewModel),
+                FadeInDown(
+                  duration: Duration(milliseconds: 600),
+                  child: CustomNotificationsForm(viewModel: viewModel),
+                ),
                 SizedBox(height: height * .3),
-                SubmitButtonWidget(viewModel: viewModel),
+                FadeInUp(
+                  duration: Duration(milliseconds: 600),
+                  delay: Duration(milliseconds: 300),
+                  child: SubmitButtonWidget(viewModel: viewModel),
+                ),
                 SizedBox(height: height * .04),
               ],
             ),

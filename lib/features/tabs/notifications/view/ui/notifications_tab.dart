@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -71,11 +72,14 @@ class NotificationsTab extends StatelessWidget {
                 separatorBuilder: (context, index) => Divider(),
                 itemBuilder: (context, index) {
                   NotificationModel notification = state.notifications[index];
-                  return CustomNotificationItem(
-                    viewModel: viewModel,
-                    title: notification.title ?? '',
-                    message: notification.message ?? '',
-                    notificationId: notification.id ?? '',
+                  return FadeInLeft(
+                    delay: Duration(milliseconds: 100 * index),
+                    child: CustomNotificationItem(
+                      viewModel: viewModel,
+                      title: notification.title ?? '',
+                      message: notification.message ?? '',
+                      notificationId: notification.id ?? '',
+                    ),
                   );
                 },
               );

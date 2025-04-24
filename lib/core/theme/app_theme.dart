@@ -11,6 +11,12 @@ class AppTheme {
   static const Color textFieldBackground = Color(0XFFF1F4FF);
   static const Color black = Color(0XFF0C1015);
 
+  static const Color openness = Color(0XFF3B82F6);
+  static const Color conscientiousness = Color(0XFFF59E0B);
+  static const Color extraversion = Color(0XFFFACC15);
+  static const Color agreeableness = Color(0XFF14B8A6);
+  static const Color neuroticism = Color(0XFFFF0000);
+
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: white,
     primaryColor: primary,

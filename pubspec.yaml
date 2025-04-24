@@ -68,6 +68,7 @@ dependencies:
   fluttertoast: ^8.2.12
   animate_do: ^4.2.0
   json_annotation: ^4.9.0
+  fl_chart: ^0.67.0
 
 dev_dependencies:
   flutter_test:

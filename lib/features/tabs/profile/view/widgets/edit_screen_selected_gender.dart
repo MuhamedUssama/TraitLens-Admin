@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trait_lens_admin/core/theme/app_theme.dart';
 
 import '../view_model/edit_profile_screen/edit_profile_screen_actions.dart';
 import '../view_model/edit_profile_screen/edit_profile_screen_states.dart';
@@ -23,10 +25,11 @@ class EditScreenSelectedGender extends StatelessWidget {
           children: [
             Text(
               locale!.gender,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(fontSize: 18),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontSize: 18.sp,
+                color: AppTheme.grey,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             const SizedBox(width: 40),
             Expanded(

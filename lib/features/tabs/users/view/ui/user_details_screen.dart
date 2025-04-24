@@ -26,12 +26,16 @@ class UserDetailsScreen extends StatefulWidget {
 class _UserDetailsScreenState extends State<UserDetailsScreen> {
   final UserDetailsViewModel viewModel = getIt.get<UserDetailsViewModel>();
   late final UserDetailsModel user;
+  bool _isUserInitialized = false;
 
   @override
   void didChangeDependencies() {
-    user = ModalRoute.of(context)!.settings.arguments as UserDetailsModel;
-    if (user.id != null) {
-      viewModel.getUserDetectionResults(userId: user.id!);
+    if (!_isUserInitialized) {
+      user = ModalRoute.of(context)!.settings.arguments as UserDetailsModel;
+      if (user.id != null) {
+        viewModel.getUserDetectionResults(userId: user.id!);
+      }
+      _isUserInitialized = true;
     }
     super.didChangeDependencies();
   }
@@ -104,7 +108,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                         delay: Duration(milliseconds: 100 * index),
                         child: CustomResultCard(
                           viewModel: viewModel,
-                          detectionResul: state.userDetailsModel[index],
+                          detectionResult: state.userDetailsModel[index],
                         ),
                       );
                     },

@@ -8,6 +8,7 @@ import 'package:trait_lens_admin/features/auth/view/ui/forget_password_screen.da
 import 'package:trait_lens_admin/features/auth/view/ui/sign_in_screen.dart';
 import 'package:trait_lens_admin/features/home/home_screen.dart';
 import 'package:trait_lens_admin/features/tabs/notifications/view/ui/add_notifications_screen.dart';
+import 'package:trait_lens_admin/features/tabs/users/view/ui/result_details_screen.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/ui/user_details_screen.dart';
 
 class TraitLensAdmin extends StatelessWidget {
@@ -37,6 +38,7 @@ class TraitLensAdmin extends StatelessWidget {
             ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
             HomeScreen.routeName: (_) => HomeScreen(),
             UserDetailsScreen.routeName: (_) => UserDetailsScreen(),
+            ResultDetailsScreen.routeName: (_) => ResultDetailsScreen(),
             AddNotificationsScreen.routeName: (_) => AddNotificationsScreen(),
           },
           initialRoute: _getInitialRoute(),

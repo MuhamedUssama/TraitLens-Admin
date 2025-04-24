@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trait_lens_admin/core/theme/app_theme.dart';
 import 'package:trait_lens_admin/features/tabs/users/data/models/detection_result_model.dart';
+import 'package:trait_lens_admin/features/tabs/users/view/ui/result_details_screen.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/view_models/user_details_view_model/user_details_view_model.dart';
 
 class CustomResultCard extends StatelessWidget {
   final UserDetailsViewModel viewModel;
-  final DetectionResultModel detectionResul;
+  final DetectionResultModel detectionResult;
 
   const CustomResultCard({
     super.key,
     required this.viewModel,
-    required this.detectionResul,
+    required this.detectionResult,
   });
 
   @override
@@ -40,7 +41,7 @@ class CustomResultCard extends StatelessWidget {
                   child: PieChart(
                     PieChartData(
                       sections: viewModel.getPieChartSections(
-                        detectionResul.traits!,
+                        detectionResult.traits!,
                       ),
                       centerSpaceRadius: 55,
                       sectionsSpace: 2,
@@ -62,14 +63,20 @@ class CustomResultCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  detectionResul.dominantTrait ?? '',
+                  detectionResult.dominantTrait ?? '',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: AppTheme.grey,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      ResultDetailsScreen.routeName,
+                      arguments: detectionResult,
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.primary,
                     foregroundColor: AppTheme.white,

@@ -57,5 +57,13 @@
   "notificationTitleHint": "Enter notification title",
   "notificationDescriptionHint": "Enter notification description",
   "notifcationDescription": "Notification Description",
-  "notificationSentSuccessfully": "Notification sent successfully."
+  "notificationSentSuccessfully": "Notification sent successfully.",
+  "results": "Results",
+  "openness": "Openness",
+  "conscientiousness": "Conscientiousness",
+  "extraversion": "Extraversion",
+  "agreeableness": "Agreeableness",
+  "neuroticism": "Neuroticism",
+  "status": "Status",
+  "showResults": "Show Results"
 }

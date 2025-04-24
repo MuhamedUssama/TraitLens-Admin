@@ -57,5 +57,13 @@
   "notificationTitleHint": "أدخل عنوان الإشعار",
   "notificationDescriptionHint": "أدخل وصف الإشعار",
   "notifcationDescription": "وصف الإشعار",
-  "notificationSentSuccessfully": "تم إرسال الإشعار بنجاح."
+  "notificationSentSuccessfully": "تم إرسال الإشعار بنجاح.",
+  "results": "النتائج",
+  "openness": "الانفتاح",
+  "conscientiousness": "الضمير الحي",
+  "extraversion": "الانبساطية",
+  "agreeableness": "التوافقية",
+  "neuroticism": "العصبية",
+  "status": "الحالة",
+  "showResults": "عرض النتائج"
 }

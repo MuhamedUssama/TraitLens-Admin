@@ -15,6 +15,8 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputAction textInputAction;
   final bool? filled;
   final int? maxLines;
+  final bool readOnly;
+  final void Function()? onTap;
 
   const CustomTextFormField({
     super.key,
@@ -30,6 +32,8 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.filled,
     this.maxLines = 1,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
@@ -43,6 +47,8 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       validator: validator,
       maxLines: maxLines,
+      readOnly: readOnly,
+      onTap: onTap,
       style: Theme.of(context).textTheme.titleSmall,
       decoration: InputDecoration(
         filled: filled,

@@ -1,6 +1,11 @@
+import 'package:bottom_picker/bottom_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:trait_lens_admin/core/theme/app_theme.dart';
 
 import 'animation_assets.dart';
@@ -126,5 +131,54 @@ class AppDialogs {
         );
       },
     );
+  }
+
+  static void takeUserBirthday({
+    required BuildContext context,
+    required TextEditingController controller,
+    required void Function(Timestamp birthdayTimestamp) onPicked,
+  }) {
+    BottomPicker.date(
+      height: MediaQuery.sizeOf(context).height * .46,
+      buttonStyle: BoxDecoration(
+        color: AppTheme.primary,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      buttonPadding: 12,
+      itemExtent: 36,
+      pickerTitle: Text(
+        'Set Your Birthday',
+        style: GoogleFonts.poppins(
+          color: Colors.black,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      dateOrder: DatePickerDateOrder.dmy,
+      initialDateTime: DateTime.now(),
+      minDateTime: DateTime(1900, 1, 1),
+      maxDateTime: DateTime.now(),
+      pickerTextStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
+      buttonContent: Text(
+        'Select',
+        style: GoogleFonts.poppins(
+          color: Colors.white,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      buttonSingleColor: AppTheme.primary,
+      buttonWidth: MediaQuery.sizeOf(context).width * .8,
+      onSubmit: (date) {
+        controller.text = DateFormat('dd/MM/yyyy').format(date);
+        final Timestamp timestamp = Timestamp.fromDate(date);
+        onPicked(timestamp);
+      },
+    ).show(context);
   }
 }

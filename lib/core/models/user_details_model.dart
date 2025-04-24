@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:trait_lens_admin/features/tabs/profile/domain/entities/fill_profile_entity.dart';
 
 class UserDetailsModel {
   static const String collectionName = 'userProfile';
@@ -43,5 +44,17 @@ class UserDetailsModel {
       'profileImageUrl': profileImageUrl,
       'email': email,
     };
+  }
+
+  UserProfileEntity toEntity() {
+    return UserProfileEntity(
+      id: id,
+      fullName: fullName,
+      birthDay: birthDay,
+      phone: phone,
+      gender: gender,
+      profileImageUrl: profileImageUrl,
+      email: email,
+    );
   }
 }

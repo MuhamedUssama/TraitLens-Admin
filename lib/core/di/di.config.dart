@@ -40,6 +40,20 @@ import '../../features/tabs/notifications/view/view_models/add_notification_scre
     as _i158;
 import '../../features/tabs/notifications/view/view_models/notifications_tab_view_model/notifications_tab_view_model.dart'
     as _i474;
+import '../../features/tabs/profile/data/data_source/profile_tab_data_source.dart'
+    as _i1069;
+import '../../features/tabs/profile/data/data_source_impl/profile_tab_data_source_impl.dart'
+    as _i308;
+import '../../features/tabs/profile/data/repository_impl/profile_tab_repository_impl.dart'
+    as _i615;
+import '../../features/tabs/profile/domain/repository/profile_tab_repository.dart'
+    as _i551;
+import '../../features/tabs/profile/domain/usecases/get_user_data_usecase.dart'
+    as _i576;
+import '../../features/tabs/profile/domain/usecases/sign_out_usecase.dart'
+    as _i707;
+import '../../features/tabs/profile/domain/usecases/update_user_data_usecase.dart'
+    as _i912;
 import '../../features/tabs/users/data/data_sources/users_remote_data_source.dart'
     as _i685;
 import '../../features/tabs/users/data/repositories/users_repository.dart'
@@ -70,13 +84,28 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i685.UsersRemoteDataSource(),
     );
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.factory<_i1069.ProfileTabDataSource>(
+      () => _i308.ProfileTabDataSourceImpl(),
+    );
     gh.factory<_i621.UsersRepository>(
       () => _i650.UsersRepositoryImpl(gh<_i685.UsersRemoteDataSource>()),
+    );
+    gh.factory<_i551.ProfileTabRepository>(
+      () => _i615.ProfileTabRepositoryImpl(gh<_i1069.ProfileTabDataSource>()),
+    );
+    gh.factory<_i707.SignOutUsecase>(
+      () => _i707.SignOutUsecase(gh<_i551.ProfileTabRepository>()),
+    );
+    gh.factory<_i912.UpdateUserDataUsecase>(
+      () => _i912.UpdateUserDataUsecase(gh<_i551.ProfileTabRepository>()),
     );
     gh.factory<_i233.NotificationsRepository>(
       () => _i932.NotificationsRepositoryImpl(
         gh<_i475.NotificationsRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i576.GetUserDataUsecase>(
+      () => _i576.GetUserDataUsecase(gh<_i551.ProfileTabRepository>()),
     );
     gh.factory<_i319.UserDetailsViewModel>(
       () => _i319.UserDetailsViewModel(gh<_i621.UsersRepository>()),

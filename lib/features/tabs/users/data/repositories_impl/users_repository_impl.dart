@@ -24,10 +24,11 @@ class UsersRepositoryImpl implements UsersRepository {
   }
 
   @override
-  Future<Either<ServerException, List<DetectionResultModel>>>
-  getUserResults() async {
+  Future<Either<ServerException, List<DetectionResultModel>>> getUserResults({
+    required String userId,
+  }) async {
     if (await ConnectivityHelper.checkInternetConnection()) {
-      return _usersRemoteDataSource.getUserResults();
+      return _usersRemoteDataSource.getUserResults(userId: userId);
     } else {
       return Left(NoInternetConnectionException());
     }

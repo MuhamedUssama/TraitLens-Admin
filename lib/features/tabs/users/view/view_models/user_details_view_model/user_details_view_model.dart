@@ -103,10 +103,10 @@ class UserDetailsViewModel extends Cubit<UserDetailsScreenStates> {
     ];
   }
 
-  Future<void> getUserDetectionResults() async {
+  Future<void> getUserDetectionResults({required String userId}) async {
     emit(UserDetailsScreenLoadingState());
 
-    final result = await _repository.getUserResults();
+    final result = await _repository.getUserResults(userId: userId);
 
     result.fold(
       (error) {

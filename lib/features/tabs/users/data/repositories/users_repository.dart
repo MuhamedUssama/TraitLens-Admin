@@ -6,5 +6,7 @@ import 'package:trait_lens_admin/features/tabs/users/data/models/detection_resul
 abstract interface class UsersRepository {
   Future<Either<ServerException, List<UserDetailsModel>>> getUsers();
 
-  Future<Either<ServerException, List<DetectionResultModel>>> getUserResults();
+  Future<Either<ServerException, List<DetectionResultModel>>> getUserResults({
+    required String userId,
+  });
 }

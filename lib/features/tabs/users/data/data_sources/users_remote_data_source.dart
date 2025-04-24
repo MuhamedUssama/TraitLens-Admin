@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trait_lens_admin/core/errors/exceptions.dart';
 import 'package:trait_lens_admin/core/models/user_details_model.dart';
@@ -44,11 +43,10 @@ class UsersRemoteDataSource {
     }
   }
 
-  Future<Either<ServerException, List<DetectionResultModel>>>
-  getUserResults() async {
+  Future<Either<ServerException, List<DetectionResultModel>>> getUserResults({
+    required String userId,
+  }) async {
     try {
-      final String userId = FirebaseAuth.instance.currentUser!.uid;
-
       QuerySnapshot<DetectionResultModel> querySnapshot =
           await FireBaseService.getUserReslutsCollection(userId).get();
 

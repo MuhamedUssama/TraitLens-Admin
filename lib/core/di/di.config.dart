@@ -54,6 +54,10 @@ import '../../features/tabs/profile/domain/usecases/sign_out_usecase.dart'
     as _i707;
 import '../../features/tabs/profile/domain/usecases/update_user_data_usecase.dart'
     as _i912;
+import '../../features/tabs/profile/view/view_model/edit_profile_screen/edit_profile_screen_view_model.dart'
+    as _i1030;
+import '../../features/tabs/profile/view/view_model/profile_tab/profile_tab_view_model.dart'
+    as _i306;
 import '../../features/tabs/users/data/data_sources/users_remote_data_source.dart'
     as _i685;
 import '../../features/tabs/users/data/repositories/users_repository.dart'
@@ -65,6 +69,7 @@ import '../../features/tabs/users/view/view_models/user_details_view_model/user_
 import '../../features/tabs/users/view/view_models/users_tab_view_model/users_tab_view_model.dart'
     as _i947;
 import '../cache/shared_preferences.dart' as _i254;
+import '../shared/language_view_model/language_view_model.dart' as _i100;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -73,6 +78,7 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i100.LanguageViewModel>(() => _i100.LanguageViewModel());
     gh.factory<_i666.HomeScreenViewModel>(() => _i666.HomeScreenViewModel());
     gh.singleton<_i254.SharedPreferencesHelper>(
       () => _i254.SharedPreferencesHelper(),
@@ -106,6 +112,16 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i576.GetUserDataUsecase>(
       () => _i576.GetUserDataUsecase(gh<_i551.ProfileTabRepository>()),
+    );
+    gh.factory<_i306.ProfileTabViewModel>(
+      () => _i306.ProfileTabViewModel(
+        gh<_i576.GetUserDataUsecase>(),
+        gh<_i707.SignOutUsecase>(),
+      ),
+    );
+    gh.factory<_i1030.EditProfileScreenViewModel>(
+      () =>
+          _i1030.EditProfileScreenViewModel(gh<_i912.UpdateUserDataUsecase>()),
     );
     gh.factory<_i319.UserDetailsViewModel>(
       () => _i319.UserDetailsViewModel(gh<_i621.UsersRepository>()),

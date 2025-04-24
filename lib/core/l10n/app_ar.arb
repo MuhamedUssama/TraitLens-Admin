@@ -2,6 +2,7 @@
   "users": "المستخدمين",
   "notifications": "الاشعارات",
   "profile": "الملف الشخصي",
+  "editProfile": "تعديل الملف الشخصي",
   "emptyEmailAddress": "عنوان البريد الإلكتروني لا يمكن أن يكون فارغًا",
   "validateEmailAddress": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
   "emptyConfirmPassword": "تأكيد كلمة المرور لا يمكن أن يكون فارغًا",
@@ -65,5 +66,10 @@
   "agreeableness": "التوافقية",
   "neuroticism": "العصبية",
   "status": "الحالة",
-  "showResults": "عرض النتائج"
+  "showResults": "عرض النتائج",
+  "update": "تحديث",
+  "language": "اللغة",
+  "logout": "تسجيل الخروج",
+  "languageKeyword": "اللغة العربية",
+  "logoutSuccess": "تم تسجيل الخروج بنجاح"
 }

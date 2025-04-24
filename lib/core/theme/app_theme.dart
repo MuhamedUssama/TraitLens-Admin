@@ -10,6 +10,7 @@ class AppTheme {
   static const Color red = Color(0XFFCC1010);
   static const Color textFieldBackground = Color(0XFFF1F4FF);
   static const Color black = Color(0XFF0C1015);
+  static const Color darkWhite = Color(0XFFF8F8F8);
 
   static const Color openness = Color(0XFF3B82F6);
   static const Color conscientiousness = Color(0XFFF59E0B);
@@ -90,6 +91,11 @@ class AppTheme {
         fontSize: 28.sp,
         color: primary,
         fontWeight: FontWeight.w600,
+      ),
+      headlineSmall: GoogleFonts.poppins(
+        fontSize: 12.sp,
+        color: primary,
+        fontWeight: FontWeight.w400,
       ),
       bodyLarge: GoogleFonts.poppins(
         fontSize: 20.sp,

@@ -2,6 +2,7 @@
   "users": "Users",
   "notifications": "Notifications",
   "profile": "Profile",
+  "editProfile": "Edit Profile",
   "emptyEmailAddress": "Email address cannot be empty",
   "validateEmailAddress": "Please enter a valid email address",
   "emptyConfirmPassword": "Confirm password cannot be empty",
@@ -65,5 +66,11 @@
   "agreeableness": "Agreeableness",
   "neuroticism": "Neuroticism",
   "status": "Status",
-  "showResults": "Show Results"
+  "showResults": "Show Results",
+  "update": "Update",
+  "languageKeyword": "English",
+  "language": "Language",
+  "logout" : "Logout",
+  "logoutSuccess": "You have been logged out successfully"
+
 }

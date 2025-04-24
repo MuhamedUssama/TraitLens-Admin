@@ -9,6 +9,7 @@ import 'package:trait_lens_admin/core/models/user_details_model.dart';
 import 'package:trait_lens_admin/core/utils/animation_assets.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/view_models/user_details_view_model/user_details_screen_states.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/view_models/user_details_view_model/user_details_view_model.dart';
+import 'package:trait_lens_admin/features/tabs/users/view/widgets/cusom_result_card_loading_widget.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/widgets/custom_result_card.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/widgets/user_details_app_bar.dart';
 import 'package:trait_lens_admin/features/tabs/users/view/widgets/user_information_widget.dart';
@@ -57,8 +58,16 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
             bloc: viewModel,
             builder: (context, state) {
               if (state is UserDetailsScreenLoadingState) {
-                return SliverToBoxAdapter(
-                  child: Center(child: CircularProgressIndicator()),
+                return SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                  sliver: SliverList.separated(
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      return const CustomResultCardLoading();
+                    },
+                    separatorBuilder:
+                        (context, index) => SizedBox(height: 16.h),
+                  ),
                 );
               }
               if (state is UserDetailsScreenErrorState) {

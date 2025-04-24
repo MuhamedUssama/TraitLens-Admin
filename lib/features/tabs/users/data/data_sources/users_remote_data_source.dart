@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trait_lens_admin/core/errors/exceptions.dart';
 import 'package:trait_lens_admin/core/models/user_details_model.dart';
 import 'package:trait_lens_admin/core/utils/firebase_services.dart';
 import 'package:trait_lens_admin/features/auth/data/models/user_model.dart';
+import 'package:trait_lens_admin/features/tabs/users/data/models/detection_result_model.dart';
 
 @lazySingleton
 class UsersRemoteDataSource {
@@ -37,6 +41,24 @@ class UsersRemoteDataSource {
       return Right(allProfiles);
     } catch (exception) {
       return Left(ServerException(exception.toString()));
+    }
+  }
+
+  Future<Either<ServerException, List<DetectionResultModel>>>
+  getUserResults() async {
+    try {
+      final String userId = FirebaseAuth.instance.currentUser!.uid;
+
+      QuerySnapshot<DetectionResultModel> querySnapshot =
+          await FireBaseService.getUserReslutsCollection(userId).get();
+
+      List<DetectionResultModel> results =
+          querySnapshot.docs.map((result) => result.data()).toList();
+
+      return Right(results);
+    } catch (error) {
+      log(error.toString());
+      return const Left(FetchDataException());
     }
   }
 }

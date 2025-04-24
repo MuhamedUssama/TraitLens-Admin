@@ -64,7 +64,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     AppLocalizations? locale = AppLocalizations.of(context);
 
-    return FadeIn(
+    return PopScope(
+      canPop: false,
       child: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

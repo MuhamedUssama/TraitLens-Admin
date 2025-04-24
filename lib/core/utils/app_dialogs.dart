@@ -139,6 +139,13 @@ class AppDialogs {
     required void Function(Timestamp birthdayTimestamp) onPicked,
   }) {
     BottomPicker.date(
+      height: MediaQuery.sizeOf(context).height * .46,
+      buttonStyle: BoxDecoration(
+        color: AppTheme.primary,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      buttonPadding: 12,
+      itemExtent: 36,
       pickerTitle: Text(
         'Set Your Birthday',
         style: GoogleFonts.poppins(
@@ -166,7 +173,7 @@ class AppDialogs {
         textAlign: TextAlign.center,
       ),
       buttonSingleColor: AppTheme.primary,
-      buttonWidth: MediaQuery.sizeOf(context).width * .85,
+      buttonWidth: MediaQuery.sizeOf(context).width * .8,
       onSubmit: (date) {
         controller.text = DateFormat('dd/MM/yyyy').format(date);
         final Timestamp timestamp = Timestamp.fromDate(date);

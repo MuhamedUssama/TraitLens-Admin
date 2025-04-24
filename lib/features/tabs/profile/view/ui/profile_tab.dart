@@ -53,7 +53,6 @@ class _ProfileTabState extends State<ProfileTab> {
                 delay: const Duration(milliseconds: 300),
                 child: const LanguageSectionWidget(),
               ),
-
               FadeInLeft(
                 delay: const Duration(milliseconds: 400),
                 child: const Divider(color: AppTheme.grey),
@@ -62,8 +61,13 @@ class _ProfileTabState extends State<ProfileTab> {
                 delay: const Duration(milliseconds: 500),
                 child: LogoutSection(viewModel: viewModel),
               ),
-              SizedBox(height: 80.h),
-              Text('v 1.0.0', style: Theme.of(context).textTheme.bodySmall),
+              SizedBox(height: 140.h),
+              Text(
+                'v 1.0.0',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400),
+              ),
             ],
           ),
         ),
